@@ -1,6 +1,7 @@
 import React from 'react'
 
 import CurrencySelector from './components/CurrencySelector.jsx'
+import CurrencyAmount from './components/CurrencyAmount.jsx'
 
 const AVAILABLE_CURRENCIES = ['USD', 'GBP', 'EUR', 'ARS']
 
@@ -11,25 +12,13 @@ export const App = () => {
         From:
         <ul>
           <li>
-            <div>
-              <CurrencySelector currency="USD" currencies={AVAILABLE_CURRENCIES}></CurrencySelector>
-              <input type="number" value="0.96"></input>
-              <input type="number" value="25"></input>
-            </div>
+            <CurrencyAmount currency="USD" currencies={AVAILABLE_CURRENCIES} rate="0.96" amount="25"></CurrencyAmount>
           </li>
           <li>
-            <div>
-              <CurrencySelector currency="GBP" currencies={AVAILABLE_CURRENCIES}></CurrencySelector>
-              <input type="number" value="0.8"></input>
-              <input type="number" value="30"></input>
-            </div>
+            <CurrencyAmount currency="GBP" currencies={AVAILABLE_CURRENCIES} rate="0.8" amount="30"></CurrencyAmount>
           </li>
           <li>
-            <div>
-              <CurrencySelector currency="EUR" currencies={AVAILABLE_CURRENCIES}></CurrencySelector>
-              <input type="number" value="0.7"></input>
-              <input type="number" value="50"></input>
-            </div>
+            <CurrencyAmount currency="EUR" currencies={AVAILABLE_CURRENCIES} rate="0.7" amount="50"></CurrencyAmount>
           </li>
         </ul>
         <div>
