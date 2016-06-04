@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --hot"
+    "start": "webpack-dev-server --inline --hot",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "author": "Julio Olivera",
   "license": "ISC",
@@ -18,5 +20,9 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.11.1",
+    "eslint-plugin-react": "^5.1.1"
   }
 }

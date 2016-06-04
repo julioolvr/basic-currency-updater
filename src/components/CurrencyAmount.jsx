@@ -12,4 +12,11 @@ export const CurrencyAmount = ({ currency, currencies, rate, amount }) => {
   )
 }
 
+CurrencyAmount.propTypes = {
+  currency: React.PropTypes.string,
+  currencies: React.PropTypes.arrayOf(React.PropTypes.string),
+  rate: React.PropTypes.number,
+  amount: React.PropTypes.number
+}
+
 export default CurrencyAmount

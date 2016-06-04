@@ -38,8 +38,22 @@ export const App = ({ availableCurrencies, fromCurrencies, toCurrency }) => {
   )
 }
 
-export default () => {
+const currencyType = React.PropTypes.shape({
+  code: React.PropTypes.string,
+  rate: React.PropTypes.number,
+  amount: React.PropTypes.number
+})
+
+App.propTypes = {
+  availableCurrencies: React.PropTypes.arrayOf(React.PropTypes.string),
+  fromCurrencies: React.PropTypes.arrayOf(currencyType),
+  toCurrency: React.PropTypes.shape({ code: React.PropTypes.string })
+}
+
+const BoundApp = () => {
   return <App availableCurrencies={initialState.availableCurrencies}
               fromCurrencies={initialState.fromCurrencies}
               toCurrency={initialState.toCurrency} />
 }
+
+export default BoundApp

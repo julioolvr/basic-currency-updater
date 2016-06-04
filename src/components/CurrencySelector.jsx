@@ -8,4 +8,9 @@ export const CurrencySelector = ({ currency, currencies }) => {
   )
 }
 
+CurrencySelector.propTypes = {
+  currency: React.PropTypes.string,
+  currencies: React.PropTypes.arrayOf(React.PropTypes.string)
+}
+
 export default CurrencySelector
