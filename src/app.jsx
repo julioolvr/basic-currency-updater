@@ -3,30 +3,43 @@ import React from 'react'
 import CurrencySelector from './components/CurrencySelector.jsx'
 import CurrencyAmount from './components/CurrencyAmount.jsx'
 
-const AVAILABLE_CURRENCIES = ['USD', 'GBP', 'EUR', 'ARS']
+const initialState = {
+  availableCurrencies: ['USD', 'GBP', 'EUR', 'ARS'],
+  fromCurrencies: [
+    { code: 'USD', rate: 0.96, amount: 25 },
+    { code: 'GBP', rate: 0.8, amount: 30 },
+    { code: 'EUR', rate: 0.7, amount: 50 }
+  ],
+  toCurrency: { code: 'ARS' }
+}
 
-export const App = () => {
+export const App = ({ availableCurrencies, fromCurrencies, toCurrency }) => {
+  const currenciesList = fromCurrencies.map(currency => {
+    return (
+      <li>
+        <CurrencyAmount currency={currency.code}
+                        currencies={availableCurrencies}
+                        rate={currency.rate}
+                        amount={currency.amount} />
+      </li>
+    )
+  })
+
   return (
     <div>
+      From:
+      <ul>
+        {currenciesList}
+      </ul>
       <div>
-        From:
-        <ul>
-          <li>
-            <CurrencyAmount currency="USD" currencies={AVAILABLE_CURRENCIES} rate="0.96" amount="25"></CurrencyAmount>
-          </li>
-          <li>
-            <CurrencyAmount currency="GBP" currencies={AVAILABLE_CURRENCIES} rate="0.8" amount="30"></CurrencyAmount>
-          </li>
-          <li>
-            <CurrencyAmount currency="EUR" currencies={AVAILABLE_CURRENCIES} rate="0.7" amount="50"></CurrencyAmount>
-          </li>
-        </ul>
-        <div>
-          To: <CurrencySelector currency="ARS" currencies={AVAILABLE_CURRENCIES}></CurrencySelector>, ARS1234.45
-        </div>
+        To: <CurrencySelector currency={toCurrency.code} currencies={availableCurrencies} />, ARS1234.45
       </div>
     </div>
   )
 }
 
-export default App
+export default () => {
+  return <App availableCurrencies={initialState.availableCurrencies}
+              fromCurrencies={initialState.fromCurrencies}
+              toCurrency={initialState.toCurrency} />
+}
