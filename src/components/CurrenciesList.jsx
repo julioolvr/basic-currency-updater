@@ -1,9 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
-import CurrencyAmount from '../components/CurrencyAmount.jsx'
+import CurrencyAmount from './CurrencyAmount.jsx'
 
-const SelectedCurrenciesList = ({ selectedCurrencies, availableCurrencies }) => {
+const CurrenciesList = ({ selectedCurrencies, availableCurrencies }) => {
   const currenciesList = selectedCurrencies.map(currency => {
     return (
       <li key={currency.code}>
@@ -20,11 +19,9 @@ const SelectedCurrenciesList = ({ selectedCurrencies, availableCurrencies }) => 
   </ul>)
 }
 
-SelectedCurrenciesList.propTypes = {
+CurrenciesList.propTypes = {
   selectedCurrencies: React.PropTypes.array,
   availableCurrencies: React.PropTypes.array
 }
 
-export default connect(
-  ({ availableCurrencies, selectedCurrencies }) => ({ availableCurrencies, selectedCurrencies })
-)(SelectedCurrenciesList)
+export default CurrenciesList

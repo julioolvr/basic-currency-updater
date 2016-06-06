@@ -3,8 +3,8 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import currencyUpdater from './reducers'
-import ToCurrencySelector from './containers/ToCurrencySelector.jsx'
-import SelectedCurrenciesList from './containers/SelectedCurrenciesList.jsx'
+import ToSelectedCurrency from './containers/ToSelectedCurrency'
+import SelectedCurrenciesList from './containers/SelectedCurrenciesList'
 
 const store = createStore(currencyUpdater)
 
@@ -16,7 +16,7 @@ export const App = () => {
         <ul>
           <SelectedCurrenciesList />
         </ul>
-        <ToCurrencySelector />
+        <ToSelectedCurrency />
       </div>
     </Provider>
   )
