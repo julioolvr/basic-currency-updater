@@ -2,7 +2,7 @@ import React from 'react'
 
 import CurrencyAmount from './CurrencyAmount.jsx'
 
-const CurrenciesList = ({ selectedCurrencies, allCurrencies, changeSelectedCurrencyCode }) => {
+const CurrenciesList = ({ selectedCurrencies, allCurrencies, changeSelectedCurrencyCode, changeSelectedCurrencyAmount }) => {
   const currenciesList = selectedCurrencies.map((currency, i) => {
     let remainingCurrencies = new Set(allCurrencies)
     selectedCurrencies.forEach(currency => remainingCurrencies.delete(currency.code))
@@ -13,7 +13,8 @@ const CurrenciesList = ({ selectedCurrencies, allCurrencies, changeSelectedCurre
                         currencies={[currency.code].concat(Array.from(remainingCurrencies))}
                         rate={currency.rate}
                         amount={currency.amount}
-                        onCurrencyChange={newCurrencyCode => changeSelectedCurrencyCode(i, newCurrencyCode)} />
+                        onCurrencyChange={newCurrencyCode => changeSelectedCurrencyCode(i, newCurrencyCode)}
+                        onAmountChange={newValue => changeSelectedCurrencyAmount(i, newValue)} />
       </li>
     )
   })
@@ -26,7 +27,8 @@ const CurrenciesList = ({ selectedCurrencies, allCurrencies, changeSelectedCurre
 CurrenciesList.propTypes = {
   selectedCurrencies: React.PropTypes.array,
   allCurrencies: React.PropTypes.array,
-  changeSelectedCurrencyCode: React.PropTypes.func
+  changeSelectedCurrencyCode: React.PropTypes.func,
+  changeSelectedCurrencyAmount: React.PropTypes.func
 }
 
 export default CurrenciesList

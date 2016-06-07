@@ -1,4 +1,5 @@
 export const CHANGE_SELECTED_CURRENCY_CODE = 'CHANGE_SELECTED_CURRENCY_CODE'
+export const CHANGE_SELECTED_CURRENCY_AMOUNT = 'CHANGE_SELECTED_CURRENCY_AMOUNT'
 
 const initialSelectedCurrencies = [
   { code: 'USD', rate: 0.96, amount: 25 },
@@ -13,9 +14,22 @@ export function changeSelectedCurrencyCode(index, newCurrencyCode) {
   }
 }
 
+export function changeSelectedCurrencyAmount(index, newAmount) {
+  return {
+    type: CHANGE_SELECTED_CURRENCY_AMOUNT,
+    payload: { index, newAmount }
+  }
+}
+
 const ACTION_HANDLERS = {
   [CHANGE_SELECTED_CURRENCY_CODE]: (state, action) => {
     let newCurrency = { ...state[action.payload.index], code: action.payload.newCurrencyCode }
+    let newState = [...state]
+    newState[action.payload.index] = newCurrency
+    return newState
+  },
+  [CHANGE_SELECTED_CURRENCY_AMOUNT]: (state, action) => {
+    let newCurrency = { ...state[action.payload.index], amount: Number(action.payload.newAmount) }
     let newState = [...state]
     newState[action.payload.index] = newCurrency
     return newState
